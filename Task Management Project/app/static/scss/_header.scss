@@ -1,0 +1,231 @@
+.header {
+	width: 100%;
+	background: black;
+	height: 70px;
+	&.open {
+		.overlay {
+			display: block;
+			// animation: fade-in 300ms ease-in-out forwards;
+		}
+		.header__toggle {
+			> span:first-child {
+				transform: rotate(45deg);
+			}
+			> span:nth-child(2) {
+				opacity: 0;
+			}
+			> span:last-child {
+				transform: rotate(-45deg);
+			}
+		}
+	}
+	&__github {
+		color: blue;
+	}
+	//mobile
+	&__toggle {
+		> span {
+			display: block;
+			width: 26px;
+			height: 2px;
+			background-color: $darkBlue;
+			//if the line is not the last, add margin space
+			transition: all 300ms ease-in-out;
+			transform-origin: 2px 1.2px;
+			&:not(:last-child) {
+				margin-bottom: 6px;
+			}
+		}
+		&.open {
+			> span:first-child {
+				transform: rotate(45deg);
+			}
+			> span:nth-child(2) {
+				opacity: 0;
+			}
+			> span:last-child {
+				transform: rotate(-45deg);
+			}
+		}
+	}
+	nav {
+		position: relative;
+		// padding: 7px 30px;
+		padding-top: 15px;
+		padding-bottom: 15px;
+		// font-family: 'Zen Old Mincho', serif;
+		font-family: 'Open Sans', sans-serif;
+		font-size: 20px;
+		font-weight: 400;
+		width: 100%;
+		height: 70px;
+
+		a {
+			color: white;
+			text-decoration: none;
+			img {
+				width: 3rem;
+				height: 3rem;
+			}
+		}
+		background: black;
+		background-size: cover;
+	}
+	&__menu {
+		background: white;
+		position: absolute;
+		top: 100px;
+		padding: 1.625rem;
+		// width: calc(100%-40px);
+		width: calc(100% - 2.5rem);
+		border-radius: 3px;
+		left: 50%;
+		color: red;
+		transform: translateX(-50%);
+		// a {
+		// 	display: block;
+		// 	color: $darkBlue;
+		// 	padding: 0.625rem;
+		// 	text-align: center;
+		// 	font-family: 'AG2';
+		// }
+		a {
+			display: block;
+			font-size: 20px;
+			color: $darkBlue;
+			position: relative;
+			text-transform: uppercase;
+			text-decoration: none;
+			padding-bottom: 8px;
+			padding: 30px;
+			&:before,
+			&:after {
+				content: '';
+				position: absolute;
+				bottom: 2px;
+				left: 0;
+				right: 0;
+				height: 2px;
+				background-color: red;
+				text-align: center;
+			}
+			&:before {
+				opacity: 0;
+				transform: translateY(-$shiftpixel);
+				transition: transform 2s $easeout, opacity 0.2s;
+			}
+			&:after {
+				opacity: 0;
+				transform: translateY($shiftpixel/2);
+				transition: transform $time $easeout, opacity $time;
+			}
+			&:hover,
+			&:focus {
+				&:before,
+				&:after {
+					opacity: 1;
+					transform: translateY(0);
+				}
+				&:before {
+					transition: transform $time $easeout, opacity $time;
+				}
+				&:after {
+					transition: transform 2s $time $easeout, opacity 2s $time;
+				}
+			}
+		}
+	}
+
+	&__cta {
+		font-size: 1rem;
+		color: white;
+	}
+	#loggedOut {
+		font-size: 1rem;
+		color: white;
+		background: black;
+		opacity: 1;
+		cursor: context-menu;
+		margin-left: 200px;
+		&:hover {
+			background: black;
+			opacity: 1;
+			color: white;
+		}
+		&::before {
+			color: white;
+			background: black;
+		}
+	}
+	&__links {
+		a {
+			font-size: 1rem;
+			color: white;
+			padding-left: 35px;
+			padding-right: 35px;
+			// background: #cdcdcd;
+			// padding: 10px 30px 10px 30px;
+			// border-radius: 0.5em;
+			&:not(:last-child) {
+				margin-right: 32px;
+			}
+			&:first-child {
+				margin-left: 100px;
+			}
+
+			position: relative;
+			&::before {
+				content: '';
+				position: absolute;
+				background: #cdcdcd;
+				// padding: 20px 30px 20px 30px;
+				padding: 15px 50px 35px 60px;
+				border-radius: 0.5em;
+				left: 0;
+				right: 0;
+				height: 10px;
+				bottom: -14px;
+				opacity: 0;
+				transition: opacity 300ms ease-in-out;
+			}
+
+			&:hover {
+				color: white;
+				transition: color 300ms ease-in-out;
+				&::before {
+					opacity: 0.3;
+				}
+			}
+		}
+		a.active {
+			color: #1dcaf5fa;
+			&::before {
+				padding: 0;
+				border-radius: 0;
+				height: 5px;
+				left: 0;
+				right: 0;
+				bottom: -24px;
+				background: linear-gradient(to top, #1d7bf5fa, #1d7bf5be);
+
+				transition: opacity 300ms ease-in-out;
+				opacity: 1;
+			}
+		}
+	}
+}
+
+.overlay {
+	// background-color: $darkBlue;
+
+	opacity: 0;
+
+	position: fixed;
+	top: 4rem;
+	right: 0px;
+	left: 0px;
+	bottom: 0px;
+	background: linear-gradient($darkBlue, transparent);
+}
+
+//open style hamburger
