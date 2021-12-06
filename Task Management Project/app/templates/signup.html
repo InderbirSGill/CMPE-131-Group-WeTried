@@ -1,0 +1,104 @@
+{% extends "base.html"%} {%block title %}Sign up{%endblock%} {%block bootstrap%}
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous"
+/>
+{%endblock%} {%block bodyType%}
+<body class="bodyOpacity noScroll"></body>
+{%endblock%} {%block active%}
+<div class="header__links hide-mobile">
+	<a href="homepage">Home</a>
+	<a href="about">About</a>
+	<a href="signup" class="active">Sign up</a>
+</div>
+{%endblock%}
+{%block notif%}
+{% with msgs = get_flashed_messages(with_categories=true)%}
+		{%if msgs %}
+			{% for category, msg in msgs%}
+			{%if category != 'error'%}
+				<div class = "alert alert-success alert-dismissible fade show ">
+					
+					<a href= "#" class = "close" data-dismiss = "alert" aria-label="close">&times;</a>
+					{{msg}}
+				
+				</div>
+			{%else%}
+			<div class = "alert alert-danger alter-dismissable fade show ">
+				<a href= "#" class = "close" data-dismiss = "alert" aria-label="close">&times;</a>
+				{{msg}}
+			
+			</div>
+			
+			{%endif%}
+			{%endfor%}
+		{%endif%}
+		{%endwith%}
+{%endblock%}
+{%block content%}
+<div class="container flex flex-jc-c flex-ai-c">
+	<div class="Register flex flex-jc-c flex-ac-c">
+		<form method="POST">
+			<h1 align="center" class="Register__title">Never lose track again.</h4>
+
+			<h4 align="center" class="Register__description">Register for an account</h4>
+			<div class="form-group">
+				<label for="email" class="Register__label"> Email Address</label>
+				<input
+					type="email"
+					class="form-control "
+					id="email"
+					name="email"
+					placeholder="Enter email"
+				/>
+			</div>
+			<div class="form-group">
+				<label for="firstName" class="Register__label"> First Name</label>
+				<input
+					type="text"
+					class="form-control "
+					id="firstName"
+					name="firstName"
+					placeholder="Enter first name"
+				/>
+			</div>
+			<div class="form-group">
+				<label for="password1" class="Register__label"> Password</label>
+				<input
+					type="password"
+					class="form-control"
+					id="password1"
+					name="password1"
+					placeholder="Enter password"
+				/>
+			</div>
+			<div class="form-group">
+				<label for="password2" class="Register__label"> Confirm password</label>
+				<input
+					type="password"
+					class="form-control "
+					id="password2"
+					name="password2"
+					placeholder="Re-enter password"
+				/>
+			</div>
+
+			<button type="submit" class="button Register__Button">Submit</button>
+			<a href= "login" id= "loginHere">Login here</a>
+			<a href= "signupGoogle" id= "loginHere">or sign up with Google</a>
+		</form>
+	</div>
+</div>
+{%endblock%}
+{%block featurelist%}
+{%endblock%}
+{%block script%}
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<script
+	type="text/javascript"
+	src="{{url_for('static', filename= 'js/signup.js')}}"
+></script>
+{%endblock%}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;900&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Lato&family=Zen+Old+Mincho:wght@400;900&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+		{%block bootstrap%} {%endblock%}
+		<link
+			rel="stylesheet"
+			href="{{url_for('static', filename = 'dist/style.css')}}"
+		/>
+		<title>{% block title %}Home{% endblock %}</title>
+	</head>
+	{%block bodyType%}
+	<body>
+		{%endblock%}
+
+		<header class="header">
+			<div class="overlay has-fade"></div>
+			{%block navBar%}
+			<nav class="webContainer flex flex-jc-sb flex-ai-c flex-fg-c">
+				<a
+					href="https://github.com/InderbirSGill/CMPE-131-Group-WeTried"
+					target="_blank"
+					class="header__github"
+					><img
+						src="{{url_for('static', filename= 'Images/wt.png')}}"
+						width="30"
+						height="30"
+						alt="WeTried"
+						srcset=""
+				/></a>
+				<a id="buttonNav" href="#" class="header__toggle hide-desktop">
+					<span> </span><span></span><span></span>
+				</a>
+			
+				{%block active %}
+				<div class="header__links hide-mobile">
+					<a href="homepage" class="active">Home</a>
+					<a href="about">About</a>
+				
+				</div>
+				{%endblock%}
+				<a href="login" class="button header__cta hide-mobile">Login</a>
+			</nav>
+			{%endblock%}
+			<div class="header__menu webContainer has-fade">
+				<a href="homepage">Home</a>
+				<a href="about">About</a>
+				<a href="login">Login</a>
+			</div>
+			{%block notif%}
+			{%endblock%}
+			{%block content %}
+			
+				
+			{%endblock%}
+			</div>
+			{%block featurelist%}
+			<section class= "intro webContainer ">
+				<div class="intro__image "></div>
+				<div class="intro__text">
+					<h1>
+						We-Tried to Make a Project Calendar 
+					</h1>
+					<p>Featuring a bootstrap calendar as our interface, teamleaders will be able to quickly assign works to their respective teams. Communications have never been easier with the ability to create events on the fly using the lightweight program.</p>
+					<a href ="signup" id= "homepageSU" class = "button intro__cta">SIGN UP</a>
+				</div>
+			</section>
+			<section class="descriptions">
+				<div class= "temp webContainer">
+					<div class="descriptions__image">
+					</div>
+					<div class= "descriptions__grid ">
+						<span >
+							<div class="descriptions__item">
+								<div class="descriptions__icon">
+								
+								</div>
+								<div class="descriptions__title"></div>
+								<div class="descriptions__description ">
+									<h1>Secure</h1>
+									<p>Google Authentication or account creation to save and secure your work 	
+									</p>
+								</div>
+							</div>
+						</span>
+						<span>
+							<div class="descriptions__item">
+								<div class="descriptions__icon">
+								</div>
+								<div class="descriptions__title"></div>
+								<div class="descriptions__description">
+									<span>
+										<h1>Fast</h1>
+									</span>
+									<span>
+										<p>
+											Browser-based calendar system, light-weight and easily rendered
+										</p>
+								</div>
+							</div>
+						</span>
+						<span>
+							<div class="descriptions__item">
+								<div class="descriptions__icon">
+								</div>
+								<div class="descriptions__title"></div>
+								<div class="descriptions__description">
+									<span>
+										<h1>Efficient</h1>
+								
+									</span>
+									<span>
+										<p>
+											Assigning work to team members and managing their tasks with a few clicks
+										</p>
+									</span><span></span>
+									
+									
+								</div>
+							</div>
+						</span>
+					</div>
+			</div>
+			</section>
+			{%endblock%}
+		</header>
+	
+		{%block script%}
+		<script
+			type="text/javascript"
+			src="{{url_for('static', filename= 'js/script.js')}}"
+		></script>
+		{%endblock%}
+	</body>
+</html>

@@ -1,0 +1,71 @@
+{% extends "base.html"%} {%block title %}Login{%endblock%} {%block bootstrap%}
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous"
+/>
+{%endblock%} {%block bodyType%}
+<body class="bodyOpacity noScroll"></body>
+{%endblock%} {%block active%}
+<div class="header__links hide-mobile">
+	<a href="homepage">Home</a>
+	<a href="about">About</a>
+</div>
+{%endblock%} {%block notif%} {% with messages =
+get_flashed_messages(with_categories=true)%} {%if messages %} {% for category,
+message in messages%} {%if category == 'error'%}
+<div class="alert alert-danger alter-dismissable fade show">
+	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	{{message}}
+</div>
+{%else%}
+<div class="alert alert-success alert-dismissible fade show">
+	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	{{message}}
+</div>
+
+{%endif%} {%endfor%} {%endif%} {%endwith%} {%endblock%} {%block content%}
+<div class="container flex flex-jc-c flex-ai-c">
+	<div class="Register Register__login flex flex-jc-c flex-ac-c">
+		<form method="POST">
+			<h1 align="center" class="Register__title">Login</h1>
+
+			<div class="form-group">
+				<label for="email" class="Register__label"> Email Address</label>
+				<input
+					type="email"
+					class="form-control"
+					id="email"
+					name="email"
+					placeholder="Enter email"
+				/>
+			</div>
+			<div class="form-group">
+				<label for="password1" class="Register__label"> Password</label>
+				<input
+					type="password"
+					class="form-control"
+					id="password1"
+					name="password1"
+					placeholder="Enter password"
+				/>
+			</div>
+			<div>
+				<button id="RegLog" type="submit" class="button Register__Button">
+					Submit
+				</button>
+				<a href="signup" class="Register__signUp">Sign up here</a>
+			</div>
+			<div class="Register__googleButton">
+				<a href="signupGoogle">Or login with Google</a>
+			</div>
+		</form>
+	</div>
+</div>
+{{text}} {%endblock%} {%block featurelist%} {%endblock%} {%block script%}
+<script
+	type="text/javascript"
+	src="{{url_for('static', filename= 'js/signup.js')}}"
+></script>
+{%endblock%}
